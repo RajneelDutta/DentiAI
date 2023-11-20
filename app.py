@@ -1,18 +1,14 @@
-import os
-#os.environ['KMP_DUPLICATE_LIB_OK']='True'
 import streamlit as st
 import cv2
 import io
 import numpy as np
 from ultralytics import YOLO
-import requests
+from weights import weights
 #from google.colab.patches import cv2_imshow
 
-
+weights()
 # Load YOLO model
-#MODEL_PATH = "best.pt"
-
-MODEL_PATH = requests.get("https://drive.google.com/file/d/1ND8uss-V0p0EpMBEIItH-jhJd_pfosw1/view?usp=share_link")
+MODEL_PATH = "best.pt"
 model = YOLO(MODEL_PATH)
 model.fuse()
 

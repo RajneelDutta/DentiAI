@@ -5,7 +5,7 @@ import numpy as np
 from ultralytics import YOLO
 from weights import weights
 #from google.colab.patches import cv2_imshow
-from roboflow import Roboflow
+#from roboflow import Roboflow
 
 weights()
 # Load YOLO model

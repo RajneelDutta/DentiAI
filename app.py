@@ -12,7 +12,8 @@ from roboflow import Roboflow
 # MODEL_PATH = "best.pt"
 # model = YOLO(MODEL_PATH)
 # model.fuse()
-rf = Roboflow(api_key="V2dL1WLejFRabYWqflnR")
+st.write("API_KEY:", st.secrets["api_key"])
+rf = Roboflow(api_key="API_KEY")
 project = rf.workspace().project("teethdetection-rjah4")
 model = project.version(8).model
  

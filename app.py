@@ -5,12 +5,20 @@ import numpy as np
 from ultralytics import YOLO
 from weights import weights
 #from google.colab.patches import cv2_imshow
+from roboflow import Roboflow
 
-weights()
+# weights()
 # Load YOLO model
-MODEL_PATH = "best.pt"
-model = YOLO(MODEL_PATH)
-model.fuse()
+# MODEL_PATH = "best.pt"
+# model = YOLO(MODEL_PATH)
+# model.fuse()
+rf = Roboflow(api_key="V2dL1WLejFRabYWqflnR")
+project = rf.workspace().project("teethdetection-rjah4")
+model = project.version(8).model
+ 
+# infer on a local image
+#print(model.predict("your_image.jpg", confidence=40, overlap=30).json())
+ 
 
 # Function to display boxes with numbers
 def display_boxes_with_numbers(image, results):
@@ -57,7 +65,7 @@ def main():
 
         # Make predictions
         results_list = model.predict(image)
-        results = results_list[0]  
+        results = results_list[0]
         
         # Display boxes with numbers
         display_boxes_with_numbers(image, results)

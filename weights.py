@@ -3,9 +3,9 @@ import os
 
 def weights():
     # Define the Google Drive file ID of the file you want to download
-    file_id = "1ND8uss-V0p0EpMBEIItH-jhJd_pfosw1"
+    file_id = "1ca0E9Ox5Oymcx0SUlb7UKQi8tk_HLZkc"
 
-    file_path = "best.pt"
+    file_path = "best_v8.pt"
 
     # Check if the file already exists
     if not os.path.exists(file_path):
@@ -17,3 +17,4 @@ def weights():
         print(f"File '{file_path}' downloaded successfully.")
     else:
         print(f"File '{file_path}' already exists. Skipping download.")
+

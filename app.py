@@ -7,15 +7,15 @@ from weights import weights
 #from google.colab.patches import cv2_imshow
 from roboflow import Roboflow
 
-# weights()
+weights()
 # Load YOLO model
-# MODEL_PATH = "best.pt"
-# model = YOLO(MODEL_PATH)
-# model.fuse()
-st.write("API_KEY:", st.secrets["api_key"])
-rf = Roboflow(api_key="API_KEY")
-project = rf.workspace().project("teethdetection-rjah4")
-model = project.version(8).model
+MODEL_PATH = "best_v8.pt"
+model = YOLO(MODEL_PATH)
+model.fuse()
+# st.write("API_KEY:", st.secrets["api_key"])
+# rf = Roboflow(api_key="API_KEY")
+# project = rf.workspace().project("teethdetection-rjah4")
+# model = project.version(8).model
  
 # infer on a local image
 #print(model.predict("your_image.jpg", confidence=40, overlap=30).json())

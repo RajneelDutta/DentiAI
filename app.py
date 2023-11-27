@@ -38,7 +38,7 @@ def display_boxes_with_numbers(image, results):
         font = cv2.FONT_HERSHEY_COMPLEX
         font_scale = 0.7
         font_thickness = 2
-        font_color = (255, 255, 255)
+        font_color = (255, 0, 0)
         text = str(idx + 1)
 
         # Calculate the position for the text

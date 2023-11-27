@@ -3,9 +3,10 @@ import os
 
 def weights():
     # Define the Google Drive file ID of the file you want to download
-    file_id = "1ca0E9Ox5Oymcx0SUlb7UKQi8tk_HLZkc"
-
-    file_path = "best_v8.pt"
+    # file_id = "1ca0E9Ox5Oymcx0SUlb7UKQi8tk_HLZkc"
+    file_id = "1VSmXQcz-1QwwSFfNvgp-VsSus1MY4wWK"
+    
+    file_path = "best.pt"
 
     # Check if the file already exists
     if not os.path.exists(file_path):

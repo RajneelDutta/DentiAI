@@ -34,6 +34,21 @@ def display_boxes_with_numbers(image, results):
         # Draw bounding box
         # cv2.rectangle(image, (cords[0], cords[1]), (cords[2], cords[3]), (0, 255, 0), 2)
 
+        # Draw dotted bounding box
+        dot_length = 5  # Adjust the length of the dots
+        dot_space = 3   # Adjust the space between dots
+        line_thickness = 2
+
+        for i in range(cords[0], cords[2], dot_length + dot_space):
+            cv2.line(image, (i, cords[1]), (i + dot_length, cords[1]), (0, 255, 0), line_thickness)
+            cv2.line(image, (i, cords[3]), (i + dot_length, cords[3]), (0, 255, 0), line_thickness)
+
+        for i in range(cords[1], cords[3], dot_length + dot_space):
+            cv2.line(image, (cords[0], i), (cords[0], i + dot_length), (0, 255, 0), line_thickness)
+            cv2.line(image, (cords[2], i), (cords[2], i + dot_length), (0, 255, 0), line_thickness)
+
+
+        
         # Draw number overlay
         font = cv2.FONT_HERSHEY_COMPLEX
         font_scale = 0.7

@@ -9,13 +9,18 @@ from roboflow import Roboflow
 
 weights()
 # Load YOLO model
-MODEL_PATH = "best_v8.pt"
+MODEL_PATH = "best.pt"
 model = YOLO(MODEL_PATH)
 model.fuse()
 
 # infer on a local image
 #print(model.predict("your_image.jpg", confidence=40, overlap=30).json())
- 
+def apply_clahe(image):
+    # Apply CLAHE to each channel
+    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
+    processed_image = cv2.merge([clahe.apply(channel) for channel in cv2.split(image)])
+
+    return processed_image
 
 # Function to display boxes with numbers
 def display_boxes_with_numbers(image, results):
@@ -57,15 +62,19 @@ def main():
 
         # Use cv2.imdecode to read the image from bytes
         image = cv2.imdecode(np.frombuffer(image_bytes.read(), np.uint8), -1)
-        
-        st.image(image, channels="BGR", caption="Uploaded Image.", use_column_width=True)
 
-        # Make predictions
-        results_list = model.predict(image)
+        # Apply CLAHE to the image
+        processed_image = apply_clahe(image)
+
+        # Display the original and processed images
+        st.image([image, processed_image], channels="BGR", caption=["Original Image", "Processed Image"], use_column_width=True)
+
+        # Make predictions on the processed image
+        results_list = model.predict(processed_image)
         results = results_list[0]
-        
-        # Display boxes with numbers
-        display_boxes_with_numbers(image, results)
+
+        # Display boxes with numbers on the processed image
+        display_boxes_with_numbers(processed_image.copy(), results)
 
 if __name__ == "__main__":
     main()

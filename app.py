@@ -37,7 +37,7 @@ def display_boxes_with_numbers(image, results):
         # Draw dotted bounding box
         dot_length = 4  # Adjust the length of the dots
         dot_space = 5   # Adjust the space between dots
-        line_thickness = 1
+        line_thickness = 2
 
         for i in range(cords[0], cords[2], dot_length + dot_space):
             cv2.line(image, (i, cords[1]), (i + dot_length, cords[1]), (0, 255, 0), line_thickness)
